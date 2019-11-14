@@ -1,0 +1,134 @@
+   the main results
+
+
+
+I)Overall investment cost is       28.30b€
+
+
+
+II)the Renewable capacity
+
+Offshore                       12.77    GW
+
+onsore                        120.00     GW
+
+PV                             92.80  GW
+
+run of river                   10.50GW
+
+lake                           12.86GW
+
+biogas                         31.02 GW
+
+OCGT                           31.02 GW
+
+nuclear                         0.00 GW
+
+Battery                        21.27 GW
+
+PHS                             9.30 GW
+
+methanation                    31.02 GW
+
+
+
+
+
+III)Needed storage volume and storage charging power
+
+Battery Storage                87.92       GWh
+
+PHS Storage                   180.00       GWh
+
+methane storage            10433.28   GWh
+
+Battery Storage                21.27       GW
+
+PHS Storage                     9.30       GW
+
+methane storage                6.01   GW
+
+
+
+V)Overall yearly energy generation of each technology
+
+Offshore                       58.79    TWh
+
+onsore                        341.33     TWh
+
+PV                            131.96  TWh
+
+run of river                   39.88TWh
+
+lake                           15.30TWh
+
+biogas                        15.00 TWh
+
+OCGT                           23.72  TWh
+
+nuclear                         0.00 TWh
+
+battery                        20.30 TWh
+
+phs                            17.46  TWh
+
+Methanation                    8.72TWh
+
+
+
+VI)more details
+
+LCOE for Offshore                      44.59 €/MWh
+
+LCOE for Onshore                       41.50 €/MWh
+
+LCOE for PV                            38.86 €/MWh
+
+LCOE for Run-of-river                  41.80 €/MWh
+
+LCOE for Lake                         102.16 €/MWh
+
+LCOE for Biogas                       87.80 €/MWh
+
+LCOE for OCGT                          65.73 €/MWh
+
+LCOE for Nuclear power                  UNDF €/MWh
+
+LCOS for battery                       63.70 €/MWh
+
+LCOS for pumped storage                19.70 €/MWh
+
+LCOS for methanation                 152.96 €/MWh
+
+
+
+Load Curtailment       15.93% and the storage loss         5.07%
+
+
+
+LCOE of the system is        46.99 €/MWh or        59.49 €/MWh
+
+
+
+Average spot price of the system is        64.90 €/MWh
+
+
+
+capacity factors
+
+Offshore                         0.53
+
+onsore                           0.32
+
+PV                               0.16
+
+run of river                     0.43
+
+lake                             0.14
+
+OCGT                             0.09
+
+Nuclear power                    UNDF
+
+
+
