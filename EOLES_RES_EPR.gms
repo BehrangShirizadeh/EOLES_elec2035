@@ -72,35 +72,38 @@ $ondelim
 $include  inputs/max_capas.csv
 $offdelim
 / ;
-parameter capex(tec) 'annualized power capex cost in M€/GW/year'
+parameter capex(tec) 'annualized power capex cost in Mâ‚¬/GW/year'
 /
 $ondelim
 $include  inputs/annuities2035.csv
 $offdelim
 / ;
-parameter capex_en(str) 'annualized energy capex cost of storage technologies in M€/GWh/year'
+parameter capex_en(str) 'annualized energy capex cost of storage technologies in Mâ‚¬/GWh/year'
 /
 $ondelim
 $include  inputs/str_annuities.csv
 $offdelim
 / ;
-parameter fOM(tec) 'annualized fixed operation and maintenance costs M€/GW/year'
+parameter fOM(tec) 'annualized fixed operation and maintenance costs Mâ‚¬/GW/year'
 /
 $ondelim
 $include  inputs/fO&M2035.csv
 $offdelim
 / ;
-Parameter vOM(tec) 'Variable operation and maintenance costs in M€/GWh'
+Parameter vOM(tec) 'Variable operation and maintenance costs in Mâ‚¬/GWh'
 /
 $ondelim
 $include  inputs/vO&M2035.csv
 $offdelim
 / ;
 
-parameter fixed_costs(tec) 'yearly fixed cost of each tec in M€/GW/year' ;
+parameter fixed_costs(tec) 'yearly fixed cost of each tec in Mâ‚¬/GW/year' ;
 fixed_costs(tec) = capex(tec) + fOM(tec);
-parameter s_capex(str) 'charging related annuity of storage in M€/GW/year' /PHS 0, battery 0, methanation 134.1993182/;
-parameter s_opex(str)    'charging related fOM of storage in M€/GW/year'   /PHS 0, battery 0, methanation 87.75/;
+*For WACC = 4.5% the line below:
+parameter s_capex(str) 'charging related annuity of storage in Mâ‚¬/GW/year' /PHS 0, battery 0, methanation 134.1993182/;
+*For WACC = 8%, the line below:
+*parameter s_capex(str) 'charging related annuity of storage in Mâ‚¬/GW/year' /PHS 0, battery 0, methanation 181.479171/;
+parameter s_opex(str)    'charging related fOM of storage in Mâ‚¬/GW/year'   /PHS 0, battery 0, methanation 87.75/;
 parameter eta_in(str) 'charging efifciency of storage technologies' /PHS 0.95, battery 0.9, methanation 0.59/;
 parameter eta_out(str) 'discharging efficiency of storage technolgoies' /PHS 0.9, battery 0.95, methanation 0.45/;
 scalar eta_ocgt 'efficiency of OCGT power plants' /0.45/;
@@ -121,7 +124,7 @@ variables        GENE(tec,h)     'hourly energy generation in TWh'
                  STORED(str,h)   'energy stored in each storage technology in GWh'
                  CAPACITY(str)   'energy volume of storage technologies in GWh'
                  RSV(frr,h)      'required upward frequency restoration reserve in GW'
-                 COST            'final investment cost in b€'        ;
+                 COST            'final investment cost in bâ‚¬'        ;
 
 positive variables GENE(tec,h),CAPA(tec),STORAGE(str,h), S(str),STORED(str,h),CAPACITY(str),RSV(frr,h);
 
@@ -215,7 +218,7 @@ parameter lc 'load curtailment of the network';
 lc = ((sumgene - sumdemand)*100/sumgene) - str_loss;
 parameter spot_price(h) 'marginal cost'    ;
 spot_price(h) = 1000000*adequacy.m(h);
-parameter marginal_cost 'average value over the year of spot price in €/MWh';
+parameter marginal_cost 'average value over the year of spot price in â‚¬/MWh';
 marginal_cost = sum(h,spot_price(h))/8760;
 parameter gas_price(h) 'hourly gas price';
 gas_price(h) = -1000000*combustion.m(h);
@@ -249,7 +252,7 @@ file results /'outputs/RES-EPR-2006-50.txt'/ ;
 put results;
 put '   the main results ' //
 //
-'I)Overall investment cost is' cost.l 'b€' //
+'I)Overall investment cost is' cost.l 'bâ‚¬' //
 //
 'II)the Renewable capacity ' //
 'Offshore                'CAPA.l('offshore')'    GW'//
@@ -288,23 +291,23 @@ put '   the main results ' //
 'Methanation            'gene_tec('methanation')'TWh'//
 //
 'VI)more details'//
-'LCOE for Offshore               ' lcoe('offshore')' €/MWh'//
-'LCOE for Onshore                ' lcoe('onshore')' €/MWh'//
-'LCOE for PV                     ' lcoe('pv')' €/MWh'//
-'LCOE for Run-of-river           ' lcoe('river')' €/MWh'//
-'LCOE for Lake                   ' lcoe('lake')' €/MWh'//
-'LCOE for Biogas                ' lcoe('biogas')' €/MWh'//
-'LCOE for OCGT                   ' lcoe('gas')' €/MWh'//
-'LCOE for Nuclear power          ' lcoe('nuclear')' €/MWh'//
-'LCOS for battery                ' lcos('battery')' €/MWh'//
-'LCOS for pumped storage         ' lcos('phs')' €/MWh'//
-'LCOS for methanation           ' lcos('methanation')' €/MWh'//
+'LCOE for Offshore               ' lcoe('offshore')' â‚¬/MWh'//
+'LCOE for Onshore                ' lcoe('onshore')' â‚¬/MWh'//
+'LCOE for PV                     ' lcoe('pv')' â‚¬/MWh'//
+'LCOE for Run-of-river           ' lcoe('river')' â‚¬/MWh'//
+'LCOE for Lake                   ' lcoe('lake')' â‚¬/MWh'//
+'LCOE for Biogas                ' lcoe('biogas')' â‚¬/MWh'//
+'LCOE for OCGT                   ' lcoe('gas')' â‚¬/MWh'//
+'LCOE for Nuclear power          ' lcoe('nuclear')' â‚¬/MWh'//
+'LCOS for battery                ' lcos('battery')' â‚¬/MWh'//
+'LCOS for pumped storage         ' lcos('phs')' â‚¬/MWh'//
+'LCOS for methanation           ' lcos('methanation')' â‚¬/MWh'//
 //
 'Load Curtailment' lc '% and the storage loss ' str_loss '%'//
 //
-'LCOE of the system is 'lcoe_sys1' €/MWh or 'lcoe_sys2' €/MWh '//
+'LCOE of the system is 'lcoe_sys1' â‚¬/MWh or 'lcoe_sys2' â‚¬/MWh '//
 //
-'Average spot price of the system is ' marginal_cost' €/MWh'//
+'Average spot price of the system is ' marginal_cost' â‚¬/MWh'//
 //
 'capacity factors '//
 'Offshore                 'cf('offshore')//
