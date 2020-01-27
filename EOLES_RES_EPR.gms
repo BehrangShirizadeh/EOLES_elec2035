@@ -45,7 +45,7 @@ $offdelim
 parameter demand(h) 'demand profile in each hour in GW'
 /
 $ondelim
-$include inputs/demand2006.csv
+$include inputs/demand2035_RTE.csv
 $offdelim
 /;
 Parameter lake_inflows(m) 'monthly lake inflows in GWh'
@@ -247,7 +247,7 @@ The .txt file just to have a summary and general idea of the key numbers
 The .csv file to have a fine output with hourly data for final data processing and analysis
 $Offtext
 *-------------------------------------------------------------------------------
-file results /'outputs/RES-EPR-2006-50.txt'/ ;
+file results /'outputs/Results.txt'/ ;
 *the .txt file
 put results;
 put '   the main results ' //
@@ -320,7 +320,7 @@ put '   the main results ' //
 //
 ;
 *-------------------------------------------------------------------------------
-file hourly_generation /'outputs/RES-EPR-2006-50.csv' / ;
+file hourly_generation /'outputs/Results.csv' / ;
 *the .csv file
 parameter nSTORAGE(str,h);
 nSTORAGE(str,h) = 0 - STORAGE.l(str,h);
